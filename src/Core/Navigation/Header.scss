@@ -59,11 +59,14 @@
 .navbar-collapsible {
     height: 70px;
     width: 100%;
+    z-index: 10000;
 
     @media screen and (max-width: $small) {
+        display: none;
         background-color: $light;
         bottom: 0;
-        position: absolute;
+        position: fixed;
+        
     }
 }
 

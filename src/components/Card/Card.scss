@@ -1,0 +1,120 @@
+@import '../../sass/base';
+
+.card {
+    display: flex;
+    overflow: hidden;
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.37);
+
+    @media screen and (max-width:$small ) {
+        width: 360px;
+        height: 170px;
+    }
+
+    @media screen and (min-width:$medium) {
+        width: 550px;
+        height: 270px;
+    }
+
+}
+
+.card:hover {
+    .card-link {
+        span {
+            transform: translateX(-10px);
+        }
+
+        .icon {
+            transform: scale(1);
+        }
+    }
+
+    .card-img>img {
+        filter: blur(0) grayscale(0);
+    }
+
+    .card-details>.circle {
+        transform: scale(6.5);
+        opacity: .5;
+    }
+}
+
+.card-img {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 70%;
+
+    img {
+        filter: blur(2px) grayscale(1);
+        height: 100%;
+        object-fit: cover;
+        transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1300ms;
+        width: 100%;
+    }
+}
+
+.card-link {
+    align-items: center;
+    bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 10px;
+    text-decoration: none;
+    z-index: 1000;
+
+
+    span {
+        color: $light;
+        font-family: $Poppins;
+        font-size: 28px;
+        transform: translateX(35px);
+        transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1300ms;
+    }
+
+    .icon {
+        height: 35px;
+        transform-origin: right;
+        transform: scale(0);
+        transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1300ms;
+        width: 35px;
+    }
+
+    &:hover {
+        span {
+            transform: translateX(-10px);
+        }
+
+        .icon {
+            transform: scale(1);
+        }
+    }
+}
+
+.card-details {
+    width: 30%;
+    height: 100%;
+    position: relative;
+
+    p {
+        width: 170px;
+        position: absolute;
+        display: block;
+        transform: rotate(90deg);
+        transform-origin: top left;
+        left: 25px;
+        font-family: $Pixel;
+        font-size: 12px;
+    }
+}
+
+.circle {
+    background-color: $secondary;
+    border-radius: 50%;
+    bottom: 15px;
+    height: 50px;
+    position: absolute;
+    right: 15px;
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1300ms;
+    width: 50px;
+}
