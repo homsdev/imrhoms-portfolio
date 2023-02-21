@@ -1,14 +1,13 @@
-import React from 'react'
-import Banner from '../../components/Banner/Banner';
+import React from "react";
+import Banner from "../../components/Banner/Banner";
 
-
-import './Home.scss';
-
+import "./Home.scss";
 
 function Home() {
   return (
-      <Banner/>
-  )
+    <></>
+    // <Banner/>
+  );
 }
 
-export default Home
+export default Home;

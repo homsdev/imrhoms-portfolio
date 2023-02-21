@@ -9,7 +9,6 @@ const Footer = () => {
                 <p>© 2023 imrhoms.com, Inc. All rights reserved.</p>
             </div>
             <div className="social-media">
-                <span>icons...</span>
             </div>
         </div>
     )

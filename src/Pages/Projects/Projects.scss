@@ -7,9 +7,7 @@
     grid-auto-rows: 300px;
     align-items: center;
     justify-items: center;
-    margin-top: 75px;
     @media screen and (max-width:$small ) {
-        margin-top: 85px;
         grid-template-columns: 1fr;
         grid-auto-rows: 170px;
         row-gap: 25px;

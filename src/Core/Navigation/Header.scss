@@ -1,101 +1,228 @@
-@import "../../sass/base";
+@import "../../sass";
 
 .navbar {
-    width: 100%;
+  width: 100%;
+  display: flex;
+
+  @include laptop {
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+  }
 }
 
 .navbar-brand {
-    background-color: $dark;
-    height: 70px;
-    position: absolute;
-    top: 0;
+  background-color: $dark;
+  height: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 
+  @include smartphone {
+    width: 100%;
+  }
+
+  @include laptop {
+    width: 30%;
+    background-color: transparent;
+  }
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  img {
+    height: 30px;
+    width: 30px;
+  }
+
+  span {
+    color: $light;
+    font-family: "Poppins EB";
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-left: 10px;
+  }
+
+  @include smartphone {
     img {
-        height: 40px;
-        margin-left: 10px;
-        width: 40px;
+      height: 30px;
+      width: 30px;
     }
 
     span {
-        color: $light;
-        font-family: 'Poppins EB';
-        font-size: 24px;
-        letter-spacing: 2px;
-        margin-left: 10px;
+      font-size: 18px;
+    }
+  }
+
+  @include laptop {
+    img {
+      width: 45px;
+      height: 45px;
     }
 
-    a {
-        display: none;
+    span {
+      font-size: 36px;
+      color: black;
     }
+  }
+}
 
+.navbar-toggler {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  height: 40px;
+  width: 40px;
 
-    @media screen and (max-width: $small) {
-        align-items: center;
-        display: flex;
-        width: 100%;
+  @include laptop {
+    display: none;
+  }
+}
 
-        a {
-            align-items: center;
-            background-color: $primary;
-            border-radius: 10px;
-            color: black;
-            display: flex;
-            font-family: $Cascadia;
-            font-size: 18px;
-            padding: 5px;
-            position: absolute;
-            right: 15px;
-            text-decoration: none;
+.navbar-toggler-icon {
+  background-color: $light;
+  border-radius: 3px;
+  display: block;
+  height: 3px;
+  position: relative;
+  transition: all 500ms ease-out;
+  width: 100%;
 
-            img {
-                height: 20px;
-                margin: 0 5px;
-                width: 20px;
-            }
-        }
+  &::before,
+  &::after {
+    background-color: inherit;
+    border-radius: 3px;
+    content: "";
+    height: inherit;
+    position: absolute;
+    right: 0;
+    transition: all 500ms ease-out;
+    width: 100%;
+  }
+
+  &::before {
+    transform: translateY(-10px);
+  }
+
+  &::after {
+    transform: translateY(10px);
+  }
+
+  &.active {
+    background-color: transparent;
+    transform: rotate(360deg);
+    &::before {
+      background-color: $light;
+      transform: rotate(-45deg);
     }
+    &::after {
+      background-color: $light;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.navbar-badge {
+  align-items: center;
+  background-color: $primary;
+  border-radius: 10px;
+  color: black;
+  display: flex;
+  font-family: $regularText;
+  padding: 3px 7px;
+  text-decoration: none;
+  img {
+    height: 20px;
+    margin-left: 5px;
+    width: 20px;
+  }
+
+  @include laptop {
+    display: none;
+  }
 }
 
 .navbar-collapsible {
-    height: 70px;
-    width: 100%;
-    z-index: 10000;
+  width: 100%;
+  z-index: 10000;
+  background-color: $dark;
+  transition: 1000ms all ease;
 
-    @media screen and (max-width: $small) {
-        display: none;
-        background-color: $light;
-        bottom: 0;
-        position: fixed;
-        
+  @include smartphone {
+    height: 0vh;
+    overflow: hidden;
+    position: absolute;
+    top: 60px;
+
+    &.active {
+      height: 100vh;
     }
+  }
+
+  @include laptop{
+    background-color: transparent;
+  }
 }
 
 .navbar-nav {
-    align-items: center;
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    margin: 10px 0;
-    padding: 0;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
-    @media screen and (max-width:$small) {}
+  @include smartphone {
+    flex-direction: column;
+  }
 }
 
-.nav-item {
-    a {
-        color: $dark;
-        cursor: pointer;
-        letter-spacing: 1px;
-        text-decoration: none;
-        text-transform: uppercase;
+// .nav-item {
+//   align-items: center;
+//   cursor: pointer;
+//   display: flex;
 
-        span {
-            display: none;
-        }
+//   @include smartphone {
+//     width: 100%;
+//     margin: 20px 0;
+//   }
+// }
 
-        img {
-            height: 50px;
-            width: 50px;
-        }
-    }
-}
+// .nav-link {
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   text-decoration: none;
+//   font-family: $regularText;
+//   img {
+//     height: 30px;
+//     width: 30px;
+//     margin: 0 10px;
+//     filter: invert(100%);
+//   }
+
+//   span {
+//     display: block;
+//     color: $light;
+//     font-size: 24px;
+//     text-transform: uppercase;
+//     letter-spacing: 2px;
+//   }
+
+//   @include laptop {
+//     img{
+//       width: 25px;
+//       height: 25px;
+//       filter: none;
+//     }
+    
+//     span{
+//       font-size: 18px;
+//       color: black;
+//     }
+//   }
+// }

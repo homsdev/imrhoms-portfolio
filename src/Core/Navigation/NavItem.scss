@@ -1,0 +1,48 @@
+@import "../../sass";
+
+.nav-item {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+
+  @include smartphone {
+    width: 100%;
+    margin: 20px 0;
+  }
+}
+
+.nav-link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-family: $regularText;
+  img {
+    height: 30px;
+    width: 30px;
+    margin: 0 10px;
+    filter: invert(100%);
+  }
+
+  span {
+    display: block;
+    color: $light;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  @include laptop {
+    img {
+      width: 25px;
+      height: 25px;
+      filter: none;
+    }
+
+    span {
+      font-size: 18px;
+      color: black;
+    }
+  }
+}
