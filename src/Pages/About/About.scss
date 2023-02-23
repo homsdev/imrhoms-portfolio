@@ -1,76 +1,116 @@
-@import '../../sass/base';
+//@import '../../sass/base';
+@import "../../sass";
 
 .about-section {
-    background: $lighter;
+  background: $lighter;
+  font-family: $Cascadia;
+
+  @include smartphone {
     display: flex;
-    font-family: $Cascadia;
     flex-direction: column;
+  }
+
+  @include laptop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 100px 1fr 1fr;
+    grid-template-areas:
+      "Header Avatar"
+      "Info Avatar"
+      "Actions Avatar";
+  }
 }
 
 .character-header {
-    h2 {
-        border-bottom: 1px solid black;
-        border-top: 1px solid black;
-        display: inline-block;
-        font-size: 42px;
-        font-weight: 200;
-        letter-spacing: 2px;
-        margin: 10px 10px 0 10px;
-        position: relative;
-        text-align: center;
-        width: 90%;
-    }
-
-    p{
-        margin: 10px 0 0 0;
-        text-align: center;
-        width: 100%;
-
-        span{
-            background-color: $dark;
-            border-radius: 10px;
-            color: $primary;
-            padding: 4px 7px;
-        }
-    }   
-}
-
-.character-jobs{
-    h3{
-        border-bottom: 1px solid black;
-        font-family: $Cascadia;
-        font-weight: normal;
-        margin: 20px 0 0 10px;
-        width: 50%;
-    }
-    
-    ul{
-        font-family: $Cascadia;
-        font-weight: normal;
-        list-style: none;
-    }
-}
-
-.character-img{
+  h2 {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    display: inline-block;
+    font-size: 42px;
+    font-weight: 200;
+    letter-spacing: 2px;
+    margin: 10px 10px 0 10px;
     position: relative;
-    img{
-        width: 100%;
-        object-position: center;
-        object-fit: fill;
-    };
+    text-align: center;
+    width: 90%;
+  }
+
+  p {
+    margin: 10px 0 0 0;
+    text-align: center;
+    width: 100%;
+
+    span {
+      background-color: $dark;
+      border-radius: 10px;
+      color: $primary;
+      padding: 4px 7px;
+    }
+  }
+
+  @include laptop {
+    grid-area: Header;
+  }
 }
 
-.character-footer{
-    a{
-        background-color: $dark;
-        color: $primary;
-        display: block;
-        font-size: 18px;
-        font-weight: 200;
-        margin: 0 auto;
-        padding: 10px;
-        text-align: center;
-        text-decoration: none;
-        width: 60%;
+.character-jobs {
+  h3 {
+    border-bottom: 1px solid black;
+    font-family: $Cascadia;
+    font-weight: normal;
+    margin: 20px 0 0 10px;
+    width: 50%;
+  }
+
+  ul {
+    font-family: $Cascadia;
+    font-weight: normal;
+    list-style: none;
+  }
+
+  @include laptop {
+    grid-area: Info;
+  }
+}
+
+.character-img {
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    object-position: center;
+    object-fit: fill;
+  }
+
+  @include laptop {
+    grid-area: Avatar;
+    align-self: center;
+    justify-self: center;
+    background-color: $light;
+    border: 3px solid black;
+    img {
+      width: 500px;
+      height: calc(100vh - $navHeight);
     }
+  }
+}
+
+.character-footer {
+  a {
+    background-color: $dark;
+    color: $primary;
+    display: block;
+    font-size: 18px;
+    font-weight: 200;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 60%;
+  }
+
+  @include laptop {
+    grid-area: Actions;
+  }
 }

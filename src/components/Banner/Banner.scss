@@ -1,73 +1,128 @@
-@import '../../sass/base';
+//@import '../../sass/base';
+@import "../../sass";
 
-.hero {
-    position: absolute;
-    transform: translateY(-60%) translateX(-50%);
-    top: 50%;
-    left: 50%;
-    backdrop-filter: blur(10px);
-    background-color: rgba($color: $light, $alpha: .1);
-    border-radius: 50%;
-    overflow: hidden;
+.banner-container {
+  align-items: center;
+  background-color: $light;
+  background-image: url("../../assets/img/Rain.svg");
+  background-repeat: no-repeat;
+  display: flex;
+  height: calc(100vh - 60px);
+  justify-content: space-evenly;
+  width: 100%;
 
-    img {
-        transform: translateY(-10%);
-        width: 100%;
-    }
-
-    @media screen and (max-width: $small) {
-        width: 370px;
-        height: 370px;
-    }
-
+  @include smartphone() {
+    flex-direction: column;
+  }
 }
 
-.bg {
+.banner-stack {
+  width: 50%;
+  height: 500px;
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+
+  @include smartphone {
+    display: none;
+  }
+}
+
+.banner-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $regularText;
+  font-size: 24px;
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  transition: all 700ms ease-out;
+}
+
+@mixin bgBoxColor($boxColor) {
+  background-color: rgba($color: $boxColor, $alpha: 0.5);
+  &:hover {
+    background-color: rgba($color: $boxColor, $alpha: 1);
+  }
+}
+
+.js {
+  @include bgBoxColor(yellow);
+}
+
+.spring {
+  @include bgBoxColor(yellowgreen);
+  grid-column: span 1;
+  grid-row: 1 / span 2;
+}
+
+.sql {
+  @include bgBoxColor(cadetblue);
+}
+
+.react {
+  @include bgBoxColor(darkcyan);
+  grid-column: 1 / span 2;
+}
+
+.hero {
+  display: block;
+  backdrop-filter: blur(10px);
+  background-color: rgba($color: $light, $alpha: 0.1);
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
     width: 100%;
-    height: 100vh;
-    background-image: url('../../assets/img/Rain.svg');
-    background-repeat: no-repeat;
-    background-color: $light;
+  }
+
+  @include smartphone {
+    width: 370px;
+    height: 370px;
+  }
+
+  @include laptop {
+    width: 400px;
+    height: 400px;
+  }
 }
 
 .label {
-    display: none;
-    @media screen and (max-width: $small) {
-        align-items: center;
-        bottom: 10%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: absolute;
-        width: 100%;
+  display: none;
+  @media screen and (max-width: $small) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 
-        span {
-            background-color: $secondary;
-            border-radius: 10px;
-            color: $light;
-            display: inline-block;
-            font-family: $Cascadia;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            padding: 5px;
-            text-align: center;
-            width: 60%;
-        }
+    span {
+      background-color: $secondary;
+      border-radius: 10px;
+      color: $light;
+      display: inline-block;
+      font-family: $Cascadia;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      padding: 5px;
+      text-align: center;
+      width: 60%;
     }
+  }
 }
 
 .icons {
-    display: none;
-    @media screen and (max-width: $small) {
-        display: flex;
-        height: 70px;
-        justify-content: space-between;
-        width: 40%;
+  display: none;
+  @media screen and (max-width: $small) {
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    width: 40%;
 
-        img {
-            height: 50px;
-            width: 50px;
-        }
-
+    img {
+      height: 50px;
+      width: 50px;
     }
+  }
 }

@@ -4,10 +4,7 @@ import Banner from "../../components/Banner/Banner";
 import "./Home.scss";
 
 function Home() {
-  return (
-    <></>
-    // <Banner/>
-  );
+  return <Banner />;
 }
 
 export default Home;
